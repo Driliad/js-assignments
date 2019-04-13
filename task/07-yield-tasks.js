@@ -33,7 +33,13 @@
  *
  */
 function* get99BottlesOfBeer() {
-    throw new Error('Not implemented');
+   let current = 100;
+   let isOdd = true;
+   if (current > 3) {
+      current--;
+      yield `${current} bottles of beer on the wall, ${current} bottles of beer.`;
+      // \nTake one down and pass it around, ${current - 1} bottles of beer on the wall.
+   }
 }
 
 
@@ -47,7 +53,12 @@ function* get99BottlesOfBeer() {
  *
  */
 function* getFibonacciSequence() {
-    throw new Error('Not implemented');
+   let current = 0;
+   let next = 1;
+   while (true) {
+      yield current;
+      [current, next] = [next, next + current];
+   }
 }
 
 
@@ -82,7 +93,7 @@ function* getFibonacciSequence() {
  *
  */
 function* depthTraversalTree(root) {
-    throw new Error('Not implemented');
+   throw new Error('Not implemented');
 }
 
 
@@ -108,7 +119,7 @@ function* depthTraversalTree(root) {
  *
  */
 function* breadthTraversalTree(root) {
-    throw new Error('Not implemented');
+   throw new Error('Not implemented');
 }
 
 
@@ -126,14 +137,14 @@ function* breadthTraversalTree(root) {
  *   [ 1, 3, 5, ... ], [ -1 ] => [ -1, 1, 3, 5, ...]
  */
 function* mergeSortedSequences(source1, source2) {
-    throw new Error('Not implemented');
+   throw new Error('Not implemented');
 }
 
 
 module.exports = {
-    get99BottlesOfBeer: get99BottlesOfBeer,
-    getFibonacciSequence: getFibonacciSequence,
-    depthTraversalTree: depthTraversalTree,
-    breadthTraversalTree: breadthTraversalTree,
-    mergeSortedSequences: mergeSortedSequences
+   get99BottlesOfBeer: get99BottlesOfBeer,
+   getFibonacciSequence: getFibonacciSequence,
+   depthTraversalTree: depthTraversalTree,
+   breadthTraversalTree: breadthTraversalTree,
+   mergeSortedSequences: mergeSortedSequences
 };
