@@ -195,7 +195,9 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-   return null;
+   const element = str[str.split('').findIndex((char, index, str) => str.indexOf(char) === str.lastIndexOf(char))];
+   return element;
+
 }
 
 
@@ -326,14 +328,7 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-   let numLength = (num + "").length;
-   do {
-      num = (num + "").split("").reduce((acc, value) => acc + value);
-      numLength = num.toString().length;
-   }
-   while (numLength > 9);
-
-   return num;
+   return (num - 1) % 9 + 1;;
 }
 
 
@@ -359,8 +354,29 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(str) {
-   throw new Error('Not implemented');
-}
+   const bracketsConfig = [
+      ["[", "]"],
+      ["(", ")"],
+      ["{", "}"],
+      ["<", ">"]
+   ]
+   if (str.length % 2 === 0) {
+      let length = str.length - 1;
+      while (length >= 0) {
+         bracketsConfig.forEach(element => {
+            if (str[length] === element[0]) {
+               str = str.replace(element[0] + element[1], "");
+            }
+         });
+
+         length--;
+      }
+
+      return str.length === 0;
+   }
+
+   return false;
+};
 
 
 /**
@@ -419,7 +435,7 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-   throw new Error('Not implemented');
+   return parseInt(num).toString(n);
 }
 
 
