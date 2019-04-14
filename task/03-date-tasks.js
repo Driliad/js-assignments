@@ -86,6 +86,7 @@ function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 function timeSpanToString(startDate, endDate) {
+
    throw new Error('Not implemented');
 }
 
@@ -94,7 +95,7 @@ function timeSpanToString(startDate, endDate) {
  * Returns the angle (in radians) between the hands of an analog clock for the specified Greenwich time.
  * If you have problem with solution please read: https://en.wikipedia.org/wiki/Clock_angle_problem
  *
- * @param {date} date
+ * @param {Date} date
  * @return {number}
  *
  * @example:
@@ -104,7 +105,22 @@ function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 function angleBetweenClockHands(date) {
-   throw new Error('Not implemented');
+   const [hours, minutes] = [date.getUTCHours(), date.getUTCMinutes()];
+   console.log(hours, minutes);
+
+   const hour_angle = 0.5 * (hours * 60 + minutes);
+   const minute_angle = 6 * minutes;
+   // var minAngle = 360 * (minutes / 60);
+   // var hourAngle = (360 * (hours / 12)) + ((360 / 12) * (minutes / 60));
+   const angle = Math.abs(hour_angle - minute_angle);
+
+   return angle;
+
+   // if (minAngle > hourAngle) {
+   //    return minAngle - hourAngle;
+   // } else {
+   //    return hourAngle - minAngle;
+   // }
 }
 
 
